@@ -41,7 +41,7 @@ import { AccueilComponent } from 'app/garage/accueil/accueil.component';
     MapsComponent,
     NotificationsComponent,
     UpgradeComponent,
-    AccueilComponent
+    AccueilComponent,
   ]
 })
 
