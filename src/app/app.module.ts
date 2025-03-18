@@ -8,6 +8,8 @@ import { ComponentsModule } from './components/components.module';
 import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { LoginComponent } from './garage/login/login.component';
+import { ReparationComponent } from './garage/reparation/reparation.component';
+import { ListReparationComponent } from './components/garage/reparation/list-reparation/list-reparation.component';
 
 @NgModule({
   imports: [
