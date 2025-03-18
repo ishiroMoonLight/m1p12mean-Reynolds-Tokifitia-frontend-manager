@@ -23,7 +23,7 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       console.log('Login successful', this.loginForm.value);
       // Après soumission réussie du formulaire, rediriger vers "dashboard"
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/accueil']);
     } else {
       console.log('Form is invalid');
     }

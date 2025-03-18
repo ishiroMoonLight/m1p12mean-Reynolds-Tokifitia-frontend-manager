@@ -23,7 +23,6 @@ import { LoginComponent } from './garage/login/login.component';
     AppComponent,
     AdminLayoutComponent,
     LoginComponent,
-
   ],
   providers: [],
   bootstrap: [AppComponent]
