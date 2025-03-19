@@ -22,22 +22,22 @@ export class ListReparationComponent implements OnInit {
       nom: 'Réparation moteur',
       description: 'Remplacement des pièces défectueuses et entretien.',
       image: 'assets/images/moteur.jpg',
-      duree: '3h',
-      prix: 250
+      duree: '03:00',
+      prix: 250_000
     },
     {
       nom: 'Changement de pneus',
       description: 'Remplacement des pneus usés par des neufs.',
       image: 'assets/images/pneus.jpg',
-      duree: '1h',
-      prix: 100
+      duree: '01:00',
+      prix: 100_000
     },
     {
       nom: 'Révision complète',
       description: 'Vérification et entretien de tous les composants.',
       image: 'assets/images/revision.jpg',
-      duree: '5h',
-      prix: 400
+      duree: '05:00',
+      prix: 400_000
     }
   ];
 
