@@ -1,0 +1,42 @@
+<div class="card">
+    <div class="card-header card-header-danger">
+        <h4 class="card-title ">Reparations - Liste</h4>
+        <p class="card-category">Liste des reparations dans le garage</p>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead class=" text-primary">
+                    <th>
+                        Nom
+                    </th>
+                    <th>
+                        Description
+                    </th>
+                    <th>
+                        Duree
+                    </th>
+                    <th>
+                        Prix
+                    </th>
+                </thead>
+                <tbody *ngFor="let reparation of reparations">
+                    <tr>
+                        <td>
+                            {{ reparation.nom }}
+                        </td>
+                        <td>
+                            {{ reparation.description }}
+                        </td>
+                        <td>
+                            {{ reparation.duree }}
+                        </td>
+                        <td class="text-primary">
+                            {{ reparation.prix }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,56 @@
+<div class="card">
+    <div class="card-header card-header-danger">
+        <h4 class="card-title">Reparations - Creation</h4>
+        <p class="card-category">Formulaire de création d'une reparation</p>
+    </div>
+    <div class="card-body">
+        <form [formGroup]="reparationForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="nom">Nom</label>
+                <input type="text" id="nom" class="form-control" formControlName="nom">
+                <small class="text-danger"
+                    *ngIf="reparationForm.get('nom')?.invalid && reparationForm.get('nom')?.touched">
+                    Le nom est obligatoire.
+                </small>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" class="form-control" formControlName="description"></textarea>
+                <small class="text-danger"
+                    *ngIf="reparationForm.get('description')?.invalid && reparationForm.get('description')?.touched">
+                    La description est obligatoire.
+                </small>
+            </div>
+
+            <div class="form-group">
+                <label for="image">URL de l'image</label>
+                <input type="text" id="image" class="form-control" formControlName="image">
+                <small class="text-danger"
+                    *ngIf="reparationForm.get('image')?.invalid && reparationForm.get('image')?.touched">
+                    L'image est obligatoire.
+                </small>
+            </div>
+
+            <div class="form-group">
+                <label for="duree">Durée (ex: 3h)</label>
+                <input type="text" id="duree" class="form-control" formControlName="duree">
+                <small class="text-danger"
+                    *ngIf="reparationForm.get('duree')?.invalid && reparationForm.get('duree')?.touched">
+                    La durée est obligatoire et doit être au format correct (ex: 2h).
+                </small>
+            </div>
+
+            <div class="form-group">
+                <label for="prix">Prix (€)</label>
+                <input type="number" id="prix" class="form-control" formControlName="prix">
+                <small class="text-danger"
+                    *ngIf="reparationForm.get('prix')?.invalid && reparationForm.get('prix')?.touched">
+                    Le prix est obligatoire et doit être un nombre positif.
+                </small>
+            </div>
+
+            <button type="submit" class="btn btn-primary" [disabled]="reparationForm.invalid">Ajouter</button>
+        </form>
+    </div>
+</div>
