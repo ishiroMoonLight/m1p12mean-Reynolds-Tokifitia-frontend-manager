@@ -35,12 +35,13 @@
                             AR {{ reparation.prix }}
                         </td>
                         <td class="td-actions text-right">
-                            <button mat-raised-button type="button" matTooltip="Modifier" [matTooltipPosition]="'above'"
-                                class="btn btn-primary btn-link btn-sm btn-just-icon">
+                            <button (click)="onEdit(reparation)" mat-raised-button type="button" matTooltip="Modifier"
+                                [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
                                 <i class="material-icons">edit</i>
                             </button>
-                            <button mat-raised-button type="button" matTooltip="Supprimer"
-                                [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                            <button (click)="onDelete(reparation.id)" mat-raised-button type="button"
+                                matTooltip="Supprimer" [matTooltipPosition]="'above'"
+                                class="btn btn-danger btn-link btn-sm btn-just-icon">
                                 <i class="material-icons">close</i>
                             </button>
                         </td>

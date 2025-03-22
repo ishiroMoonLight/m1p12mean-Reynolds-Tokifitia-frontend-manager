@@ -1,0 +1,57 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="card">
+                <div class="card-header card-header-danger">
+                    <h4 class="card-title">Reparations - Modification</h4>
+                    <p class="card-category">Formulaire de Modification d'une reparation</p>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+                        <div class="form-group">
+                            <label for="nom">Nom</label>
+                            <input type="text" id="nom" class="form-control" formControlName="nom">
+                            <small class="text-danger"
+                                *ngIf="editForm.get('nom')?.invalid && editForm.get('nom')?.touched">
+                                Le nom est obligatoire.
+                            </small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea id="description" class="form-control" formControlName="description"></textarea>
+                            <small class="text-danger"
+                                *ngIf="editForm.get('description')?.invalid && editForm.get('description')?.touched">
+                                La description est obligatoire.
+                            </small>
+                        </div>
+
+                        <!-- <div class="form-group">
+                            <button type="button" class="btn btn-secondary" (click)="openFileInput()">Choisir une
+                                image</button>
+                            <input type="file" id="image" class="d-none" (change)="onFileSelected($event)"
+                                accept="image/*">
+                            <p *ngIf="selectedFile" class="mt-2">Fichier sélectionné : {{ selectedFile.name }}</p>
+                            <small class="text-danger"
+                                *ngIf="editForm.get('image')?.invalid && editForm.get('image')?.touched">
+                                Une image est obligatoire.
+                            </small>
+                        </div> -->
+
+                        <div class="form-group">
+                            <label for="prix">Prix (AR)</label>
+                            <input type="number" id="prix" class="form-control" formControlName="prix">
+                            <small class="text-danger"
+                                *ngIf="editForm.get('prix')?.invalid && editForm.get('prix')?.touched">
+                                Le prix est obligatoire et doit être un nombre positif.
+                            </small>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" [disabled]="editForm.invalid">Ajouter</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

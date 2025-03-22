@@ -21,6 +21,7 @@ import { AccueilComponent } from 'app/garage/accueil/accueil.component';
 import { ReparationComponent } from 'app/garage/reparation/reparation.component';
 import { ListReparationComponent } from 'app/garage/reparation/list-reparation/list-reparation.component';
 import { CreateReparationComponent } from 'app/garage/reparation/create-reparation/create-reparation.component';
+import { EditReparationComponent } from 'app/garage/reparation/edit-reparation/edit-reparation.component';
 
 @NgModule({
   imports: [
@@ -47,7 +48,8 @@ import { CreateReparationComponent } from 'app/garage/reparation/create-reparati
     AccueilComponent,
     ReparationComponent,
     ListReparationComponent,
-    CreateReparationComponent
+    CreateReparationComponent,
+    EditReparationComponent
   ]
 })
 
