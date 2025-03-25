@@ -22,6 +22,9 @@ import { ReparationComponent } from 'app/garage/reparation/reparation.component'
 import { ListReparationComponent } from 'app/garage/reparation/list-reparation/list-reparation.component';
 import { CreateReparationComponent } from 'app/garage/reparation/create-reparation/create-reparation.component';
 import { EditReparationComponent } from 'app/garage/reparation/edit-reparation/edit-reparation.component';
+import { PiecesComponent } from 'app/garage/pieces/pieces.component';
+import { CreatePieceComponent } from 'app/garage/pieces/create-piece/create-piece.component';
+import { ListPieceComponent } from 'app/garage/pieces/list-piece/list-piece.component';
 
 @NgModule({
   imports: [
@@ -49,7 +52,10 @@ import { EditReparationComponent } from 'app/garage/reparation/edit-reparation/e
     ReparationComponent,
     ListReparationComponent,
     CreateReparationComponent,
-    EditReparationComponent
+    EditReparationComponent,
+    PiecesComponent,
+    CreatePieceComponent,
+    ListPieceComponent,
   ]
 })
 

@@ -1,0 +1,12 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <app-list-piece [pieces]="pieces" (onEditPiece)="onEdit($event)"></app-list-piece>
+            </div>
+            <div class="col-md-4">
+                <app-create-piece></app-create-piece>
+            </div>
+        </div>
+    </div>
+</div>
