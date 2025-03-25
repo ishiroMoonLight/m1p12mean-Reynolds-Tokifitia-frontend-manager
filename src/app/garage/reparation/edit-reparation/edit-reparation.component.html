@@ -26,7 +26,7 @@
                             </small>
                         </div>
 
-                        <!-- <div class="form-group">
+                        <div class="form-group">
                             <button type="button" class="btn btn-secondary" (click)="openFileInput()">Choisir une
                                 image</button>
                             <input type="file" id="image" class="d-none" (change)="onFileSelected($event)"
@@ -36,7 +36,22 @@
                                 *ngIf="editForm.get('image')?.invalid && editForm.get('image')?.touched">
                                 Une image est obligatoire.
                             </small>
-                        </div> -->
+                        </div>
+
+                        <!-- APERÇU DE L'IMAGE -->
+                        <div *ngIf="previewImage" class="image-preview">
+                            <p>Aperçu :</p>
+                            <img [src]="previewImage" alt="Aperçu de l'image" class="img-thumbnail">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="duree">Durée</label>
+                            <input type="time" id="duree" class="form-control" formControlName="duree">
+                            <small class="text-danger"
+                                *ngIf="editForm.get('duree')?.invalid && editForm.get('duree')?.touched">
+                                La durée est obligatoire
+                            </small>
+                        </div>
 
                         <div class="form-group">
                             <label for="prix">Prix (AR)</label>

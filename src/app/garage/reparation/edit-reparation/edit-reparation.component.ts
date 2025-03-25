@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 // Définition du type Reparation
 interface Reparation {
@@ -26,25 +26,60 @@ export class EditReparationComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute,
   ) {
     // Récupération de la réparation depuis le state
     const navigation = this.router.getCurrentNavigation();
     this.reparation = navigation?.extras.state?.['reparation'];
+    console.log('reparation to edit : ', this.reparation);
+
 
     // Initialisation du formulaire
     this.editForm = this.fb.group({
-      nom: [this.reparation?.nom || '', Validators.required],
-      description: [this.reparation?.description],
-      duree: [this.reparation?.duree || '', Validators.required],
-      prix: [this.reparation?.prix || '', [Validators.required, Validators.min(0)]],
-      image: [this.reparation?.image || ''] // Lien de l'image
+      nom: ['', Validators.required],
+      description: [''],
+      duree: ['', Validators.required],
+      prix: ['', [Validators.required, Validators.min(0)]],
+      image: [''] // Lien de l'image
     });
 
     this.previewImage = this.reparation?.image || null;
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+
+    const id = this.route.snapshot.paramMap.get('id');  // Get the ID from URL
+    console.log('idreparation : ', id);
+
+    // if (id) {
+    //   this.reparationService.getReparationById(id).subscribe((data) => {
+    //     this.reparation = data;
+    //     this.editForm.patchValue(data);  // Populate form with fetched data
+    //   });
+    // }
+
+  }
+
+  openFileInput() {
+    document.getElementById('image')?.click();
+  }
+
+  onFileSelected(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      this.selectedFile = file;
+      this.editForm.patchValue({ image: file });
+      this.editForm.get('image')?.updateValueAndValidity();
+
+      // Prévisualisation de l'image
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.previewImage = reader.result;
+      };
+      reader.readAsDataURL(file);
+    }
+  }
 
   // Fonction pour gérer l'upload d'image
   onFileChange(event: any) {
@@ -62,7 +97,7 @@ export class EditReparationComponent implements OnInit {
   onSubmit() {
     if (this.editForm.valid) {
       console.log("Données modifiées : ", this.editForm.value);
-      this.router.navigate(['/reparations']); // Redirection après modification
+      // this.router.navigate(['/reparations']); // Redirection après modification
     }
   }
 

@@ -48,8 +48,8 @@ export class ListReparationComponent implements OnInit {
 
   constructor(private router: Router) { }
 
-  onEdit(reparation: Reparation) {
-    this.router.navigate(['/reparations/edit', { state: { reparation } }]);
+  onEdit(idreparation: string) {
+    this.router.navigate(['/reparations/edit', idreparation]);
   }
 
   onDelete(id: string) {

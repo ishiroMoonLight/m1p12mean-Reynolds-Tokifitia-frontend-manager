@@ -65,5 +65,5 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'upgrade', component: UpgradeComponent },
     { path: 'accueil', component: AccueilComponent },
     { path: 'reparations', component: ReparationComponent },
-    { path: 'reparations/edit', component: EditReparationComponent },
+    { path: 'reparations/edit/:id', component: EditReparationComponent },
 ];
