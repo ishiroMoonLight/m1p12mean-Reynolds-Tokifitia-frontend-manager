@@ -1,0 +1,54 @@
+<div class="card">
+    <div class="card-header card-header-danger">
+        <h4 class="card-title ">Reparations - Liste</h4>
+        <p class="card-category">Liste des reparations dans le garage</p>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead class=" text-primary">
+                    <th>
+                        Nom
+                    </th>
+                    <th>
+                        Description
+                    </th>
+                    <th>
+                        Duree
+                    </th>
+                    <th>
+                        Prix
+                    </th>
+                </thead>
+                <tbody *ngFor="let reparation of reparations">
+                    <tr>
+                        <td>
+                            {{ reparation.nom }}
+                        </td>
+                        <td>
+                            {{ reparation.description }}
+                        </td>
+                        <td>
+                            {{ reparation.duree }}
+                        </td>
+                        <td class="text-primary">
+                            AR {{ reparation.prix }}
+                        </td>
+                        <td class="td-actions text-right">
+                            <button (click)="onEdit(reparation.id)" mat-raised-button type="button"
+                                matTooltip="Modifier" [matTooltipPosition]="'above'"
+                                class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                <i class="material-icons">edit</i>
+                            </button>
+                            <button (click)="onDelete(reparation.id)" mat-raised-button type="button"
+                                matTooltip="Supprimer" [matTooltipPosition]="'above'"
+                                class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                <i class="material-icons">close</i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

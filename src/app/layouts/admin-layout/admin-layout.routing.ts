@@ -9,6 +9,8 @@ import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { AccueilComponent } from 'app/garage/accueil/accueil.component';
+import { ReparationComponent } from 'app/garage/reparation/reparation.component';
+import { EditReparationComponent } from 'app/garage/reparation/edit-reparation/edit-reparation.component';
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -62,4 +64,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'notifications', component: NotificationsComponent },
     { path: 'upgrade', component: UpgradeComponent },
     { path: 'accueil', component: AccueilComponent },
+    { path: 'reparations', component: ReparationComponent },
+    { path: 'reparations/edit/:id', component: EditReparationComponent },
 ];
