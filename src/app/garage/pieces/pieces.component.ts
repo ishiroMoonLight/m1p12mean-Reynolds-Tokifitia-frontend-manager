@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 interface PieceType {
   id: string;
@@ -99,20 +100,42 @@ export class PiecesComponent implements OnInit {
     }
   ];
 
+  pieceForm: FormGroup;
 
-  constructor() { }
+  constructor(private fb: FormBuilder) {
+    this.pieceForm = this.fb.group({
+      id: ['0'],
+      nom: ['Batterie 5V', Validators.required],
+      description: ['Description de batterie 5V'],
+      image: [''],
+      quantite: [5, [Validators.required]],
+      prix: [100_000, [Validators.required, Validators.min(0)]]
+    });
+  }
 
   ngOnInit(): void {
   }
 
   onEdit(idpiece: string): void {
     console.log("edit piece: ", idpiece);
+    const piece = this.pieces.find(p => p.id === idpiece);
+    if (piece) {
+      this.pieceForm.patchValue(piece); // Remplit le formulaire avec les valeurs de la pièce sélectionnée
+    }
 
   }
 
   onDelete(idpiece: string): void {
     console.log("delete piece: ", idpiece);
-
+    const pieceDelete = this.pieces.find(p => p.id === idpiece);
+    if (pieceDelete) {
+      if (confirm("Voulez-vous vraiment supprimer cette piece ?" + pieceDelete.nom)) {
+        console.log("id piece delete : ", pieceDelete.id);
+        // this.reparationService.deleteReparation(id).subscribe(() => {
+        //   this.loadReparations(); // Recharge la liste après suppression
+        // });
+      }
+    }
   }
 
 }

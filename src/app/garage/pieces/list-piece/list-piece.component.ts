@@ -17,6 +17,7 @@ export class ListPieceComponent implements OnInit {
 
   @Input() pieces: PieceType[] = [];
   @Output() onEditPiece = new EventEmitter<string>();
+  @Output() onDeletePiece = new EventEmitter<string>();
 
   constructor() { }
 
@@ -28,7 +29,7 @@ export class ListPieceComponent implements OnInit {
   }
 
   onDelete(idpiece: string): void {
-
+    this.onDeletePiece.emit(idpiece);
   }
 
 }
