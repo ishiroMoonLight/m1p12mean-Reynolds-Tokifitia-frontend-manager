@@ -25,6 +25,7 @@ import { EditReparationComponent } from 'app/garage/reparation/edit-reparation/e
 import { PiecesComponent } from 'app/garage/pieces/pieces.component';
 import { CreatePieceComponent } from 'app/garage/pieces/create-piece/create-piece.component';
 import { ListPieceComponent } from 'app/garage/pieces/list-piece/list-piece.component';
+import { AffectPieceComponent } from 'app/garage/pieces/affect-piece/affect-piece.component';
 
 @NgModule({
   imports: [
@@ -56,6 +57,7 @@ import { ListPieceComponent } from 'app/garage/pieces/list-piece/list-piece.comp
     PiecesComponent,
     CreatePieceComponent,
     ListPieceComponent,
+    AffectPieceComponent
   ]
 })
 

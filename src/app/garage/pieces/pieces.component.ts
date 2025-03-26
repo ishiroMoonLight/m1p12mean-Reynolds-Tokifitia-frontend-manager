@@ -129,7 +129,7 @@ export class PiecesComponent implements OnInit {
     console.log("delete piece: ", idpiece);
     const pieceDelete = this.pieces.find(p => p.id === idpiece);
     if (pieceDelete) {
-      if (confirm("Voulez-vous vraiment supprimer cette piece ?" + pieceDelete.nom)) {
+      if (confirm("Voulez-vous vraiment supprimer cette piece ? " + pieceDelete.nom)) {
         console.log("id piece delete : ", pieceDelete.id);
         // this.reparationService.deleteReparation(id).subscribe(() => {
         //   this.loadReparations(); // Recharge la liste après suppression

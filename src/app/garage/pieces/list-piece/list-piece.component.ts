@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 interface PieceType {
   nom: string;
@@ -19,7 +20,7 @@ export class ListPieceComponent implements OnInit {
   @Output() onEditPiece = new EventEmitter<string>();
   @Output() onDeletePiece = new EventEmitter<string>();
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -30,6 +31,12 @@ export class ListPieceComponent implements OnInit {
 
   onDelete(idpiece: string): void {
     this.onDeletePiece.emit(idpiece);
+  }
+
+  affectToReparation(idpiece: string): void {
+    console.log("idpiece : ", idpiece);
+    this.router.navigate(['/pieces/affect-reparation', idpiece]);
+
   }
 
 }

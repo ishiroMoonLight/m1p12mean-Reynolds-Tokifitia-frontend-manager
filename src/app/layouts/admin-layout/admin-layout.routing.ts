@@ -12,6 +12,7 @@ import { AccueilComponent } from 'app/garage/accueil/accueil.component';
 import { ReparationComponent } from 'app/garage/reparation/reparation.component';
 import { EditReparationComponent } from 'app/garage/reparation/edit-reparation/edit-reparation.component';
 import { PiecesComponent } from 'app/garage/pieces/pieces.component';
+import { AffectPieceComponent } from 'app/garage/pieces/affect-piece/affect-piece.component';
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -68,4 +69,5 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'reparations', component: ReparationComponent },
     { path: 'reparations/edit/:id', component: EditReparationComponent },
     { path: 'pieces', component: PiecesComponent },
+    { path: 'pieces/affect-reparation/:id', component: AffectPieceComponent },
 ];

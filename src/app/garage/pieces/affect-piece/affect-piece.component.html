@@ -1,0 +1,34 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="card">
+                <div class="card-header card-header-danger">
+                    <h4 class="card-title">
+                        Piece - Affectation de {{ pieceForm.get('nom').value }}
+                    </h4>
+                    <p class="card-category">
+                        Formulaire d'affectation d'une pièce à une reparation
+                    </p>
+
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="pieceForm" (ngSubmit)="onSubmit()">
+                        <div class="form-group">
+                            <label for="quantite">Quantite</label>
+                            <input type="number" id="duree" class="form-control" formControlName="quantite">
+                            <small class="text-danger"
+                                *ngIf="pieceForm.get('quantite')?.invalid && pieceForm.get('quantite')?.touched">
+                                La quantite est obligatoire
+                            </small>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" [disabled]="pieceForm.invalid">Ajouter</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <app-list-reparation [isAffectPiece]="true" (affectPiece)="onAffect($event)"></app-list-reparation>
+        </div>
+    </div>
+</div>
