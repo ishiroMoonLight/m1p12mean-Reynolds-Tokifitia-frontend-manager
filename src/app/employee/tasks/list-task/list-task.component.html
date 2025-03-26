@@ -1,0 +1,54 @@
+<div class="card">
+    <div class="card-header card-header-danger">
+        <h4 class="card-title ">Tâches - Liste</h4>
+        <p class="card-category">Liste des tâches des personnels</p>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead class=" text-primary">
+                    <th>
+                        Nom
+                    </th>
+                    <th>
+                        Date de livraison
+                    </th>
+                    <th>
+                        Client
+                    </th>
+                    <th>
+                        Assignée à
+                    </th>
+                </thead>
+                <tbody *ngFor="let task of tasks">
+                    <tr>
+                        <td>
+                            {{ task.name }}
+                        </td>
+                        <td>
+                            {{ task.delivery }}
+                        </td>
+                        <td>
+                            {{ task.client }}
+                        </td>
+                        <td class="text-primary">
+                            {{ task.employee}}
+                        </td>
+                        <td class="td-actions text-right">
+                            <button (click)="onEdit(task.id)" mat-raised-button type="button"
+                                matTooltip="Modifier" [matTooltipPosition]="'above'"
+                                class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                <i class="material-icons">edit</i>
+                            </button>
+                            <button (click)="onDelete(task.id)" mat-raised-button type="button"
+                                matTooltip="Supprimer" [matTooltipPosition]="'above'"
+                                class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                <i class="material-icons">close</i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

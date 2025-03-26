@@ -8,6 +8,10 @@ import { ComponentsModule } from './components/components.module';
 import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { LoginComponent } from './garage/login/login.component';
+import { TasksComponent } from './employee/tasks/tasks.component';
+import { CreateTaskComponent } from './employee/tasks/create-task/create-task.component';
+import { ListTaskComponent } from './employee/tasks/list-task/list-task.component';
+import { UpdateTaskComponent } from './employee/tasks/update-task/update-task.component';
 
 @NgModule({
   imports: [
@@ -23,6 +27,10 @@ import { LoginComponent } from './garage/login/login.component';
     AppComponent,
     AdminLayoutComponent,
     LoginComponent,
+    TasksComponent,
+    CreateTaskComponent,
+    ListTaskComponent,
+    UpdateTaskComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]
