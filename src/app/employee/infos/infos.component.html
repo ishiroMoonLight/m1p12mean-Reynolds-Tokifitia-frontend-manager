@@ -1,0 +1,20 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <app-list-info (changeView)="setView($event)"></app-list-info>
+            </div>
+            <div class="col-md-4">
+                <ng-container *ngIf="viewState === 'create'">
+                    <app-create-info></app-create-info>
+                </ng-container>
+                <ng-container *ngIf="viewState === 'edit'">
+                    <app-edit-info></app-edit-info>
+                </ng-container>
+                <ng-container *ngIf="viewState === 'show'">
+                    <app-show-info></app-show-info>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</div>

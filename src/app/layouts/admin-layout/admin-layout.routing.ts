@@ -11,8 +11,8 @@ import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { AccueilComponent } from 'app/garage/accueil/accueil.component';
 import { ReparationComponent } from 'app/garage/reparation/reparation.component';
 import { EditReparationComponent } from 'app/garage/reparation/edit-reparation/edit-reparation.component';
-import { TasksComponent } from 'app/employee/tasks/tasks.component';
-import { UpdateTaskComponent } from 'app/employee/tasks/update-task/update-task.component';
+import { InfosComponent } from 'app/employee/infos/infos.component';
+import { EditInfoComponent } from 'app/employee/infos/edit-info/edit-info.component';
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -68,6 +68,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'accueil', component: AccueilComponent },
     { path: 'reparations', component: ReparationComponent },
     { path: 'reparations/edit/:id', component: EditReparationComponent },
-    { path: 'employee', component: TasksComponent},
-    { path: 'employee/edit/:id', component: UpdateTaskComponent}
+    { path: 'employee', component: InfosComponent},
+    { path: 'employee/edit/:id', component: EditInfoComponent}
 ];

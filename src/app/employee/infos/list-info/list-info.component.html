@@ -1,7 +1,7 @@
 <div class="card">
     <div class="card-header card-header-danger">
-        <h4 class="card-title ">Tâches - Liste</h4>
-        <p class="card-category">Liste des tâches des personnels</p>
+        <h4 class="card-title ">Employés - Liste</h4>
+        <p class="card-category">Liste des employés dans le garage</p>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -11,36 +11,42 @@
                         Nom
                     </th>
                     <th>
-                        Date de livraison
+                        Prénoms
                     </th>
                     <th>
-                        Client
+                        Tâche assignée
                     </th>
                     <th>
-                        Assignée à
+                        Salaire
                     </th>
                 </thead>
-                <tbody *ngFor="let task of tasks">
+                <tbody *ngFor="let employee of employees">
                     <tr>
                         <td>
-                            {{ task.name }}
+                            {{ employee.name }}
                         </td>
                         <td>
-                            {{ task.delivery }}
+                            {{ employee.firstname }}
                         </td>
                         <td>
-                            {{ task.client }}
+                            {{ employee.task }}
                         </td>
                         <td class="text-primary">
-                            {{ task.employee}}
+                            AR {{ employee.salary }}
                         </td>
                         <td class="td-actions text-right">
-                            <button (click)="onEdit(task.id)" mat-raised-button type="button"
+                            <button (click)="onEdit(employee.id)" mat-raised-button type="button"
                                 matTooltip="Modifier" [matTooltipPosition]="'above'"
                                 class="btn btn-primary btn-link btn-sm btn-just-icon">
                                 <i class="material-icons">edit</i>
                             </button>
-                            <button (click)="onDelete(task.id)" mat-raised-button type="button"
+                            <button
+                                (click)="onShow(employee.id)" mat-raised-button type="button"
+                                matTooltip="Modifier" [matTooltipPosition]="'above'"
+                                class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                <i class="material-icons">info</i>
+                            </button>
+                            <button (click)="onDelete(employee.id)" mat-raised-button type="button"
                                 matTooltip="Supprimer" [matTooltipPosition]="'above'"
                                 class="btn btn-danger btn-link btn-sm btn-just-icon">
                                 <i class="material-icons">close</i>

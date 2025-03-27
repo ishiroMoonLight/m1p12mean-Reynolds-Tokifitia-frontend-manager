@@ -8,10 +8,11 @@ import { ComponentsModule } from './components/components.module';
 import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { LoginComponent } from './garage/login/login.component';
-import { TasksComponent } from './employee/tasks/tasks.component';
-import { CreateTaskComponent } from './employee/tasks/create-task/create-task.component';
-import { ListTaskComponent } from './employee/tasks/list-task/list-task.component';
-import { UpdateTaskComponent } from './employee/tasks/update-task/update-task.component';
+import { InfosComponent } from './employee/infos/infos.component';
+import { CreateInfoComponent } from './employee/infos/create-info/create-info.component';
+import { EditInfoComponent } from './employee/infos/edit-info/edit-info.component';
+import { ListInfoComponent } from './employee/infos/list-info/list-info.component';
+import { ShowInfoComponent } from './employee/infos/show-info/show-info.component';
 
 @NgModule({
   imports: [
@@ -27,10 +28,11 @@ import { UpdateTaskComponent } from './employee/tasks/update-task/update-task.co
     AppComponent,
     AdminLayoutComponent,
     LoginComponent,
-    TasksComponent,
-    CreateTaskComponent,
-    ListTaskComponent,
-    UpdateTaskComponent,
+    InfosComponent,
+    CreateInfoComponent,
+    EditInfoComponent,
+    ListInfoComponent,
+    ShowInfoComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]
