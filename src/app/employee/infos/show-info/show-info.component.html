@@ -1,1 +1,14 @@
-<p>show-info works!</p>
+    <div class="card card-profile">
+        <div class="card-avatar">
+            <a href="javascript:void(0)">
+                <img class="img" src={{employee.image_url}} />
+            </a>
+        </div>
+        <div class="card-body">
+            <h4 class="card-title">{{employee.name+" "+employee.firstname}}</h4>
+            <p class="card-description">
+                {{employee.bio}}
+            </p>
+            <a href="javascript:void(0)" class="btn btn-danger btn-round">Apprécier <i class="material-icons">favorite</i></a>
+        </div>
+    </div>

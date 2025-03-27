@@ -10,9 +10,9 @@ export class InfosComponent implements OnInit {
   viewState: string = 'create';
   selectedEmployeeID? : number;
 
-  setView(state: string , id?: number) {
-    this.viewState = state;
-    this.selectedEmployeeID = id;
+  setView(stateEvent: { view: string, id?: number }) {
+    this.viewState = stateEvent.view;  
+    this.selectedEmployeeID = stateEvent.id;
   }
   constructor() { }
 

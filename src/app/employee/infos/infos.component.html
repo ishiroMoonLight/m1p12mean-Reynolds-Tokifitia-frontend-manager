@@ -9,10 +9,10 @@
                     <app-create-info></app-create-info>
                 </ng-container>
                 <ng-container *ngIf="viewState === 'edit'">
-                    <app-edit-info></app-edit-info>
+                    <app-edit-info [employeeId]="selectedEmployeeID"></app-edit-info>
                 </ng-container>
                 <ng-container *ngIf="viewState === 'show'">
-                    <app-show-info></app-show-info>
+                    <app-show-info [employeeId]="selectedEmployeeID"></app-show-info>
                 </ng-container>
             </div>
         </div>
