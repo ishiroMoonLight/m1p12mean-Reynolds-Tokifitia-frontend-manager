@@ -26,6 +26,8 @@ import { PiecesComponent } from 'app/garage/pieces/pieces.component';
 import { CreatePieceComponent } from 'app/garage/pieces/create-piece/create-piece.component';
 import { ListPieceComponent } from 'app/garage/pieces/list-piece/list-piece.component';
 import { AffectPieceComponent } from 'app/garage/pieces/affect-piece/affect-piece.component';
+import { ListeRendezVousComponent } from 'app/garage/rendezVous/liste-rendez-vous/liste-rendez-vous.component';
+import { CalendarRendezVousComponent } from 'app/garage/rendezVous/calendar-rendez-vous/calendar-rendez-vous.component';
 
 @NgModule({
   imports: [
@@ -57,7 +59,9 @@ import { AffectPieceComponent } from 'app/garage/pieces/affect-piece/affect-piec
     PiecesComponent,
     CreatePieceComponent,
     ListPieceComponent,
-    AffectPieceComponent
+    AffectPieceComponent,
+    ListeRendezVousComponent,
+    CalendarRendezVousComponent
   ]
 })
 
