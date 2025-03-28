@@ -35,15 +35,24 @@
                             AR {{ reparation.prix }}
                         </td>
                         <td class="td-actions text-right">
-                            <button (click)="onEdit(reparation.id)" mat-raised-button type="button"
-                                matTooltip="Modifier" [matTooltipPosition]="'above'"
+                            <ng-container *ngIf="!isAffectPiece">
+                                <button (click)="onEdit(reparation.id)" mat-raised-button type="button"
+                                    matTooltip="Modifier" [matTooltipPosition]="'above'"
+                                    class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                    <i class="material-icons">edit</i>
+                                </button>
+                                <button (click)="onDelete(reparation.id)" mat-raised-button type="button"
+                                    matTooltip="Supprimer" [matTooltipPosition]="'above'"
+                                    class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                    <i class="material-icons">close</i>
+                                </button>
+                            </ng-container>
+
+                            <!-- Affecter (seulement si isAffectPiece est TRUE) -->
+                            <button *ngIf="isAffectPiece" (click)="onAffect(reparation)" mat-raised-button type="button"
+                                matTooltip="Affecter" [matTooltipPosition]="'above'"
                                 class="btn btn-primary btn-link btn-sm btn-just-icon">
-                                <i class="material-icons">edit</i>
-                            </button>
-                            <button (click)="onDelete(reparation.id)" mat-raised-button type="button"
-                                matTooltip="Supprimer" [matTooltipPosition]="'above'"
-                                class="btn btn-danger btn-link btn-sm btn-just-icon">
-                                <i class="material-icons">close</i>
+                                <i class="material-icons">build</i>
                             </button>
                         </td>
                     </tr>

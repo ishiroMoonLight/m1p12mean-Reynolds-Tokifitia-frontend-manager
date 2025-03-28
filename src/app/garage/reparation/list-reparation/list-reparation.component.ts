@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 
 
@@ -18,6 +18,9 @@ interface Reparation {
   styleUrls: ['./list-reparation.component.scss']
 })
 export class ListReparationComponent implements OnInit {
+
+  @Input() isAffectPiece = false;
+  @Output() affectPiece = new EventEmitter<Reparation>();
 
   reparations: Reparation[] = [
     {
@@ -59,6 +62,11 @@ export class ListReparationComponent implements OnInit {
       //   this.loadReparations(); // Recharge la liste après suppression
       // });
     }
+  }
+
+  onAffect(reparation: Reparation) {
+    console.log("reparation to affect : ", reparation);
+    this.affectPiece.emit(reparation);
   }
 
 
