@@ -19,6 +19,14 @@ export class PiecesComponent implements OnInit {
 
   pieces: PieceType[] = [
     {
+      id: "0",
+      nom: "Batterie 5V",
+      description: "Batterie de voiture 5V avec une longue durée de vie et une performance optimale.",
+      image: "https://example.com/images/batterie_5v.jpg",
+      quantite: 5,
+      prix: 100000
+    },
+    {
       id: "1",
       nom: "Plaquettes de frein",
       description: "Plaquettes de frein en céramique haute performance pour une meilleure durabilité.",
@@ -121,6 +129,8 @@ export class PiecesComponent implements OnInit {
     const piece = this.pieces.find(p => p.id === idpiece);
     if (piece) {
       this.pieceForm.patchValue(piece); // Remplit le formulaire avec les valeurs de la pièce sélectionnée
+    } else{
+      this.pieceForm.reset();
     }
 
   }
