@@ -22,6 +22,17 @@
                             </small>
                         </div>
 
+                        <ul>
+                            <li *ngFor="let rep of pieceForm.value.reparation">
+                                Réparation : {{ rep.nom }}
+                                <button (click)="unaffectReparation(rep)" mat-raised-button type="button"
+                                    matTooltip="Supprimer" [matTooltipPosition]="'above'"
+                                    class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                    <i class="material-icons">close</i>
+                                </button>
+                            </li>
+                        </ul>
+
                         <button type="submit" class="btn btn-primary" [disabled]="pieceForm.invalid">Ajouter</button>
                     </form>
                 </div>

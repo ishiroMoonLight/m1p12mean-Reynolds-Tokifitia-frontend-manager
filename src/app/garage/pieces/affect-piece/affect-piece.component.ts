@@ -48,9 +48,28 @@ export class AffectPieceComponent implements OnInit {
 
   }
 
+  unaffectReparation(reparation: Reparation) {
+    console.log('reparation to unaffect : ', reparation);
+
+    const reparations = this.pieceForm.get('reparation')?.value || [];
+
+    // Filtrer pour retirer l'élément
+    const updatedReparations = reparations.filter((rep: Reparation) => rep !== reparation);
+    console.log('updatedReparations : ', updatedReparations);
+
+
+    // Mettre à jour le formulaire
+    this.pieceForm.patchValue({ reparation: updatedReparations });
+    this.pieceForm.get('reparation')?.updateValueAndValidity();
+  }
+
   onAffect(reparation: Reparation) {
     console.log('reparation to affect: ', reparation);
-
+    const reparations = this.pieceForm.get('reparation').value;
+    reparations.push(reparation);
+    this.pieceForm.patchValue({ reparation: reparations });
+    this.pieceForm.get('reparation')?.updateValueAndValidity();
+    console.log("pieceForm : ", this.pieceForm);
   }
 
 }
