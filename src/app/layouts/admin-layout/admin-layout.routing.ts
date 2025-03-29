@@ -13,6 +13,8 @@ import { ReparationComponent } from 'app/garage/reparation/reparation.component'
 import { EditReparationComponent } from 'app/garage/reparation/edit-reparation/edit-reparation.component';
 import { PiecesComponent } from 'app/garage/pieces/pieces.component';
 import { AffectPieceComponent } from 'app/garage/pieces/affect-piece/affect-piece.component';
+import { ListeRendezVousComponent } from 'app/garage/rendezVous/liste-rendez-vous/liste-rendez-vous.component';
+import { CalendarRendezVousComponent } from 'app/garage/rendezVous/calendar-rendez-vous/calendar-rendez-vous.component';
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -70,4 +72,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'reparations/edit/:id', component: EditReparationComponent },
     { path: 'pieces', component: PiecesComponent },
     { path: 'pieces/affect-reparation/:id', component: AffectPieceComponent },
+    { path: 'rendez-vous/liste', component: ListeRendezVousComponent },
+    { path: 'rendez-vous/calendar', component: CalendarRendezVousComponent },
 ];
