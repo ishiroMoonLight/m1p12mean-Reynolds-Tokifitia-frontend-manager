@@ -28,6 +28,7 @@ import { ListPieceComponent } from 'app/garage/pieces/list-piece/list-piece.comp
 import { AffectPieceComponent } from 'app/garage/pieces/affect-piece/affect-piece.component';
 import { ListeRendezVousComponent } from 'app/garage/rendezVous/liste-rendez-vous/liste-rendez-vous.component';
 import { CalendarRendezVousComponent } from 'app/garage/rendezVous/calendar-rendez-vous/calendar-rendez-vous.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
 
 @NgModule({
   imports: [
@@ -41,6 +42,7 @@ import { CalendarRendezVousComponent } from 'app/garage/rendezVous/calendar-rend
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
+    FullCalendarModule
   ],
   declarations: [
     DashboardComponent,
