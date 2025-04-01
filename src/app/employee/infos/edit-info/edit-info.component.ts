@@ -7,22 +7,28 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./edit-info.component.scss']
 })
 export class EditInfoComponent implements OnInit {
-  @Input() employeeId!: number;
+  @Input() employeeId!: string;
   
   employeeForm: FormGroup;
   selectedFile: File | null = null;
   imagePreview: string | ArrayBuffer | null = null;
   currentImageUrl: string | null = null;
   isLoading = true; // for when we wait for the datas to load
+  showPassword:boolean = false;
+  
+  
+  togglePasswordVisibility() {
+      this.showPassword = !this.showPassword;
+  }
 
-  constructor(
-    private fb: FormBuilder
-  ) {
+  constructor(private fb: FormBuilder) {
     this.employeeForm = this.fb.group({
       name: ['', Validators.required],
       firstname: [''],
       description: [''],
-      image: [''],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      image: ['', Validators.required],
       salary: ['', [Validators.required, Validators.min(0)]]
     });
   }
@@ -63,6 +69,8 @@ export class EditInfoComponent implements OnInit {
         formData.append('nom', this.employeeForm.value.name);
         formData.append('prénoms', this.employeeForm.value.firstname);
         formData.append('bio', this.employeeForm.value.description);
+        formData.append('email', this.employeeForm.value.email);
+        formData.append('password', this.employeeForm.value.password);
         formData.append('salaire', this.employeeForm.value.salary);
         if (this.selectedFile) {
           formData.append('image', this.selectedFile);

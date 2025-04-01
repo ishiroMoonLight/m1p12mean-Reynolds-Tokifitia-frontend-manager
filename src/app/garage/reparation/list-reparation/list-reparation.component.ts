@@ -19,7 +19,8 @@ interface Reparation {
 })
 export class ListReparationComponent implements OnInit {
 
-  @Input() isAffectPiece = false;
+  @Input() isAffectPiece:boolean | null = false;
+  @Input() isAffectEmployee:boolean | null = false;
   @Output() affectPiece = new EventEmitter<Reparation>();
 
   reparations: Reparation[] = [

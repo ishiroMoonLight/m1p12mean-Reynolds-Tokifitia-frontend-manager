@@ -8,10 +8,10 @@ import { Component, OnInit } from '@angular/core';
 export class InfosComponent implements OnInit {
 
   viewState: string = 'create';
-  selectedEmployeeID? : number;
+  selectedEmployeeID? : string;
   data?: any;
 
-  setView(stateEvent: { view: string, id?: number, data?: any }) {
+  setView(stateEvent: { view: string, id?: string, data?: any }) {
     this.viewState = stateEvent.view;  
     this.selectedEmployeeID = stateEvent.id;
     this.data = stateEvent.data;
