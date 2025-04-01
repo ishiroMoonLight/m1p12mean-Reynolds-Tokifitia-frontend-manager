@@ -1,6 +1,4 @@
 .chart-card, .employee-list, .stats-card {
-    margin-top: 16px ;
-    margin-bottom: 16px; ;
     padding: 16px;
     text-align: center;
     box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
