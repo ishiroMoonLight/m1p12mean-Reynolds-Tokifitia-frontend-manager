@@ -58,7 +58,7 @@ export class ListInfoComponent implements OnInit {
   }
 
   affectToReparation(employeeID: string) {
-    this.router.navigate(['employee/affect-reparation/', employeeID]);
+    this.router.navigate(['employee/affect-reparation', employeeID]);
   }
 
   ngOnInit(): void {
