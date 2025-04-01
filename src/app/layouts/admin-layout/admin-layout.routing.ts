@@ -11,6 +11,8 @@ import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { AccueilComponent } from 'app/garage/accueil/accueil.component';
 import { ReparationComponent } from 'app/garage/reparation/reparation.component';
 import { EditReparationComponent } from 'app/garage/reparation/edit-reparation/edit-reparation.component';
+import { InfosComponent } from 'app/employee/infos/infos.component';
+import { EditInfoComponent } from 'app/employee/infos/edit-info/edit-info.component';
 import { PiecesComponent } from 'app/garage/pieces/pieces.component';
 import { AffectPieceComponent } from 'app/garage/pieces/affect-piece/affect-piece.component';
 import { ListeRendezVousComponent } from 'app/garage/rendezVous/liste-rendez-vous/liste-rendez-vous.component';
@@ -70,6 +72,8 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'accueil', component: AccueilComponent },
     { path: 'reparations', component: ReparationComponent },
     { path: 'reparations/edit/:id', component: EditReparationComponent },
+    { path: 'employee', component: InfosComponent},
+    { path: 'employee/edit/:id', component: EditInfoComponent},
     { path: 'pieces', component: PiecesComponent },
     { path: 'pieces/affect-reparation/:id', component: AffectPieceComponent },
     { path: 'rendez-vous/liste', component: ListeRendezVousComponent },

@@ -21,7 +21,7 @@
                     </th>
                 </thead>
                 <tbody *ngFor="let piece of pieces">
-                    <tr>
+                    <tr *ngIf="piece.id != '0'">
                         <td>
                             {{ piece.nom }}
                         </td>
@@ -51,6 +51,17 @@
                         </td>
                     </tr>
                 </tbody>
+                <tfoot>
+                    <tr>
+                      <td colspan="4"> 
+                        <button 
+                            (click)="onEdit('0')"  mat-raised-button type="button" matTooltip="Créer" 
+                            class="btn btn-danger btn-link btn-sm btn-just-icon">
+                          <i class="material-icons">add</i>
+                        </button>
+                      </td>
+                    </tr>
+                  </tfoot>
             </table>
         </div>
     </div>

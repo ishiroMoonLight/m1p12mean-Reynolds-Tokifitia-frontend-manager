@@ -36,7 +36,6 @@ export class ListPieceComponent implements OnInit {
   affectToReparation(idpiece: string): void {
     console.log("idpiece : ", idpiece);
     this.router.navigate(['/pieces/affect-reparation', idpiece]);
-
   }
 
 }

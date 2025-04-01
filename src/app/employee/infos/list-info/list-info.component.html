@@ -1,0 +1,71 @@
+<div class="card">
+    <div class="card-header card-header-danger">
+        <h4 class="card-title ">Employés - Liste</h4>
+        <p class="card-category">Liste des employés dans le garage</p>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead class=" text-primary">
+                    <th>
+                        Nom
+                    </th>
+                    <th>
+                        Prénoms
+                    </th>
+                    <th>
+                        Tâche assignée
+                    </th>
+                    <th>
+                        Salaire
+                    </th>
+                </thead>
+                <tbody *ngFor="let employee of employees">
+                    <tr>
+                        <td>
+                            {{ employee.name }}
+                        </td>
+                        <td>
+                            {{ employee.firstname }}
+                        </td>
+                        <td>
+                            {{ employee.task }}
+                        </td>
+                        <td class="text-primary">
+                            AR {{ employee.salary }}
+                        </td>
+                        <td class="td-actions text-right">
+                            <button (click)="onEdit(employee.id)" mat-raised-button type="button"
+                                matTooltip="Modifier" [matTooltipPosition]="'above'"
+                                class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                <i class="material-icons">edit</i>
+                            </button>
+                            <button
+                                (click)="onShow(employee.id)" mat-raised-button type="button"
+                                matTooltip="Modifier" [matTooltipPosition]="'above'"
+                                class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                <i class="material-icons">info</i>
+                            </button>
+                            <button (click)="onDelete(employee.id)" mat-raised-button type="button"
+                                matTooltip="Supprimer" [matTooltipPosition]="'above'"
+                                class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                <i class="material-icons">close</i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                      <td colspan="4"> 
+                        <button 
+                            (click)="onCreate()"  mat-raised-button type="button" matTooltip="Créer" 
+                            class="btn btn-danger btn-link btn-sm btn-just-icon">
+                          <i class="material-icons">add</i>
+                        </button>
+                      </td>
+                    </tr>
+                  </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
