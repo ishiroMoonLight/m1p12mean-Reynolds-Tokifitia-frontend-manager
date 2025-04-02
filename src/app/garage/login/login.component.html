@@ -1,25 +1,40 @@
 <div class="d-flex justify-content-center align-items-center vh-100">
     <div class="card p-4 shadow-lg" style="width: 400px;">
-        <h3 class="text-center mb-4">Login</h3>
+        <h3 class="text-center mb-4">Connexion</h3>
+        <app-alert [message]="alertMessage" [type]="alertType"></app-alert>
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
-                <label for="email">Email address</label>
+                <label for="email">Adresse email</label>
                 <input type="email" class="form-control" id="email" formControlName="email">
                 <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="text-danger">
-                    <small *ngIf="loginForm.get('email')?.errors?.['required']">Email is required.</small>
-                    <small *ngIf="loginForm.get('email')?.errors?.['email']">Invalid email format.</small>
+                    <small *ngIf="loginForm.get('email')?.errors?.['required']">L'email est obligatoire.</small>
+                    <small *ngIf="loginForm.get('email')?.errors?.['email']">Format d'email invalide.</small>
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" formControlName="password">
-                <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
-                    class="text-danger">
-                    <small *ngIf="loginForm.get('password')?.errors?.['required']">Password is required.</small>
-                    <small *ngIf="loginForm.get('password')?.errors?.['minlength']">Minimum 6 characters.</small>
+              <label for="password">Mot de passe</label>
+              <div class="input-group">
+                <input 
+                  [type]="showPassword ? 'text' : 'password'" 
+                  id="password" 
+                  class="form-control" 
+                  formControlName="password">
+                <div class="input-group-append">
+                  <button 
+                    type="button" 
+                    class="btn btn-secondary" 
+                    (click)="togglePasswordVisibility()">
+                    <i class="material-icons">{{ showPassword ? 'visibility' : 'visibility_off' }}</i>
+                  </button>
                 </div>
+                <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="text-danger">
+                  <small *ngIf="loginForm.get('password')?.errors?.['required']">Le mot de passe est requis.</small>
+                  <small *ngIf="loginForm.get('password')?.errors?.['minlength']">Minimum 6 caractères.</small>
+                </div>
+              </div>
             </div>
+            
 
             <button type="submit" class="btn btn-primary w-100 mt-3" [disabled]="loginForm.invalid">Login</button>
         </form>
