@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -6,17 +6,25 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: './create-info.component.html',
   styleUrls: ['./create-info.component.scss']
 })
-export class CreateInfoComponent implements OnInit{
+export class CreateInfoComponent implements OnInit {
   employeeForm: FormGroup;
   selectedFile: File | null = null;
   imagePreview: string | ArrayBuffer | null = null;
+  showPassword:boolean = false;
+  
+  
+  togglePasswordVisibility() {
+      this.showPassword = !this.showPassword;
+  }
 
   constructor(private fb: FormBuilder) {
     this.employeeForm = this.fb.group({
       name: ['', Validators.required],
       firstname: [''],
       description: [''],
-      image:[''],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      image: ['', Validators.required],
       salary: ['', [Validators.required, Validators.min(0)]]
     });
   }
@@ -47,6 +55,8 @@ export class CreateInfoComponent implements OnInit{
       formData.append('nom', this.employeeForm.value.name);
       formData.append('prénoms', this.employeeForm.value.firstname);
       formData.append('bio', this.employeeForm.value.description);
+      formData.append('email', this.employeeForm.value.email);
+      formData.append('password', this.employeeForm.value.password);
       formData.append('salaire', this.employeeForm.value.salary);
       if (this.selectedFile) {
         formData.append('image', this.selectedFile);
@@ -70,7 +80,5 @@ export class CreateInfoComponent implements OnInit{
     if (fileInput) fileInput.value = '';
   }
 
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void {}
 }

@@ -17,6 +17,7 @@ import { PiecesComponent } from 'app/garage/pieces/pieces.component';
 import { AffectPieceComponent } from 'app/garage/pieces/affect-piece/affect-piece.component';
 import { ListeRendezVousComponent } from 'app/garage/rendezVous/liste-rendez-vous/liste-rendez-vous.component';
 import { CalendarRendezVousComponent } from 'app/garage/rendezVous/calendar-rendez-vous/calendar-rendez-vous.component';
+import { AffectEmployeeComponent } from 'app/employee/affect-employee/affect-employee.component';
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -74,6 +75,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'reparations/edit/:id', component: EditReparationComponent },
     { path: 'employee', component: InfosComponent},
     { path: 'employee/edit/:id', component: EditInfoComponent},
+    { path: 'employee/affect-reparation/:id', component: AffectEmployeeComponent},
     { path: 'pieces', component: PiecesComponent },
     { path: 'pieces/affect-reparation/:id', component: AffectPieceComponent },
     { path: 'rendez-vous/liste', component: ListeRendezVousComponent },

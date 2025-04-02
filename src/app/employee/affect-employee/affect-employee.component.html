@@ -1,0 +1,41 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="card">
+                <div class="card-header card-header-danger">
+                    <h4 class="card-title">Affectation d'un employé à une réparation</h4>
+                    <p class="card-category">Formulaire d'affectation d'un employé à une tâche de réparation</p>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="employeeTaskForm" (ngSubmit)="onSubmit()">
+                        <div class="form-group">
+                            <label for="employee">Employé<span class="text-danger">*</span></label>
+                            <select id="employee" class="form-control" formControlName="employee">
+                                <option *ngFor="let emp of employees" [value]="emp.id">{{ emp.name }} {{ emp.firstname }}</option>
+                            </select>
+                            <small class="text-danger" *ngIf="employeeTaskForm.get('employee')?.invalid && employeeTaskForm.get('employee')?.touched">
+                                L'employé est requis.
+                            </small>
+                        </div>
+
+                        <ul>
+                            <li *ngFor="let task of employeeTaskForm.value.tasks">
+                                Réparation : {{ task.nom }}
+                                <button (click)="unassignTask(task)" mat-raised-button type="button"
+                                    matTooltip="Supprimer" [matTooltipPosition]="'above'"
+                                    class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                    <i class="material-icons">close</i>
+                                </button>
+                            </li>
+                        </ul>
+
+                        <button type="submit" class="btn btn-primary" [disabled]="employeeTaskForm.invalid">Affecter</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <app-list-reparation [isAffectEmployee]="true" (affectElement)="onAffect($event)"></app-list-reparation>
+        </div>
+    </div>
+</div>

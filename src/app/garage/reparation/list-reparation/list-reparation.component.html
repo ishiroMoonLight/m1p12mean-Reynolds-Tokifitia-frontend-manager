@@ -35,7 +35,7 @@
                             AR {{ reparation.prix }}
                         </td>
                         <td class="td-actions text-right">
-                            <ng-container *ngIf="!isAffectPiece">
+                            <ng-container *ngIf="!isAffectPiece && !isAffectEmployee">
                                 <button (click)="onEdit(reparation.id)" mat-raised-button type="button"
                                     matTooltip="Modifier" [matTooltipPosition]="'above'"
                                     class="btn btn-primary btn-link btn-sm btn-just-icon">
@@ -53,6 +53,11 @@
                                 matTooltip="Affecter" [matTooltipPosition]="'above'"
                                 class="btn btn-primary btn-link btn-sm btn-just-icon">
                                 <i class="material-icons">build</i>
+                            </button>
+                            
+                            <button *ngIf="isAffectEmployee" (click)="onAffect(reparation)" mat-raised-button type="button"
+                                matTooltip="Affecter" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                <i class="material-icons">add</i>
                             </button>
                         </td>
                     </tr>

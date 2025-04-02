@@ -29,6 +29,13 @@ import { AffectPieceComponent } from 'app/garage/pieces/affect-piece/affect-piec
 import { ListeRendezVousComponent } from 'app/garage/rendezVous/liste-rendez-vous/liste-rendez-vous.component';
 import { CalendarRendezVousComponent } from 'app/garage/rendezVous/calendar-rendez-vous/calendar-rendez-vous.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
+import { LoginComponent } from 'app/garage/login/login.component';
+import { InfosComponent } from 'app/employee/infos/infos.component';
+import { CreateInfoComponent } from 'app/employee/infos/create-info/create-info.component';
+import { EditInfoComponent } from 'app/employee/infos/edit-info/edit-info.component';
+import { ListInfoComponent } from 'app/employee/infos/list-info/list-info.component';
+import { ShowInfoComponent } from 'app/employee/infos/show-info/show-info.component';
+import { AffectEmployeeComponent } from 'app/employee/affect-employee/affect-employee.component';
 
 @NgModule({
   imports: [
@@ -63,7 +70,14 @@ import { FullCalendarModule } from '@fullcalendar/angular';
     ListPieceComponent,
     AffectPieceComponent,
     ListeRendezVousComponent,
-    CalendarRendezVousComponent
+    CalendarRendezVousComponent,
+    LoginComponent,
+    InfosComponent,
+    CreateInfoComponent,
+    EditInfoComponent,
+    ListInfoComponent,
+    ShowInfoComponent,
+    AffectEmployeeComponent,
   ]
 })
 

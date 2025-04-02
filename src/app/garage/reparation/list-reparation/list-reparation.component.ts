@@ -19,8 +19,9 @@ interface Reparation {
 })
 export class ListReparationComponent implements OnInit {
 
-  @Input() isAffectPiece = false;
-  @Output() affectPiece = new EventEmitter<Reparation>();
+  @Input() isAffectPiece:boolean | null = false;
+  @Input() isAffectEmployee:boolean | null = false;
+  @Output() affectElement = new EventEmitter<Reparation>();
 
   reparations: Reparation[] = [
     {
@@ -66,7 +67,7 @@ export class ListReparationComponent implements OnInit {
 
   onAffect(reparation: Reparation) {
     console.log("reparation to affect : ", reparation);
-    this.affectPiece.emit(reparation);
+    this.affectElement.emit(reparation);
   }
 
 

@@ -30,7 +30,30 @@
                     <label for="description">Bio</label>
                     <textarea id="description" class="form-control" formControlName="description"></textarea>
                 </div>
+                
+                <div class="form-group">
+                    <label for="email">Email<span class="text-danger">*</span></label>
+                    <input type="email" id="email" class="form-control" formControlName="email">
+                    <small class="text-danger" *ngIf="employeeForm.get('email')?.invalid && employeeForm.get('email')?.touched">
+                        Un email valide est requis.
+                    </small>
+                </div>
     
+                <div class="form-group">
+                    <label for="password">Mot de passe<span class="text-danger">*</span></label>
+                    <div class="input-group">
+                        <input [type]="showPassword ? 'text' : 'password'" id="password" class="form-control" formControlName="password">
+                        <div class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="togglePasswordVisibility()">
+                                <i class="material-icons">{{ showPassword ? 'visibility' : 'visibility_off' }}</i>
+                            </button>
+                        </div>
+                    </div>
+                    <small class="text-danger" *ngIf="employeeForm.get('password')?.invalid && employeeForm.get('password')?.touched">
+                        Le mot de passe doit contenir au moins 6 caractères.
+                    </small>
+                </div>
+                
                 <div class="form-group">
                     <button type="button" class="btn btn-secondary" (click)="openFileInput()"><i class="material-icons">cloud_upload</i> Choisir une image (Photo de profil)<span class="text-danger">*</span></button>
                     <input type="file" id="image" class="d-none" (change)="onFileSelected($event)" accept="image/*">
