@@ -14,43 +14,39 @@
                         Prénoms
                     </th>
                     <th>
-                        Tâche assignée
-                    </th>
-                    <th>
                         Salaire
                     </th>
                 </thead>
                 <tbody *ngFor="let employee of employees">
                     <tr>
                         <td>
+                            <div class="card-avatar">
+                                <img class="img" src="{{ employee.pfp }}" alt="" style="border-radius: 50%;" width="100"
+                                    height="100" />
+                            </div>
                             {{ employee.name }}
                         </td>
                         <td>
                             {{ employee.firstname }}
                         </td>
-                        <td>
-                            {{ employee.task }}
-                        </td>
                         <td class="text-primary">
                             AR {{ employee.salary }}
                         </td>
                         <td *ngIf="!viewOnly" class="td-actions text-right">
-                            <button (click)="onEdit(employee.id)" mat-raised-button type="button"
-                                matTooltip="Modifier" [matTooltipPosition]="'above'"
-                                class="btn btn-primary btn-link btn-sm btn-just-icon">
+                            <button (click)="onEdit(employee._id)" mat-raised-button type="button" matTooltip="Modifier"
+                                [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
                                 <i class="material-icons">edit</i>
                             </button>
-                            <button
-                                (click)="onShow(employee.id)" mat-raised-button type="button"
-                                matTooltip="Afficher" [matTooltipPosition]="'above'"
-                                class="btn btn-primary btn-link btn-sm btn-just-icon">
+                            <button (click)="onShow(employee._id)" mat-raised-button type="button" matTooltip="Afficher"
+                                [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
                                 <i class="material-icons">info</i>
                             </button>
-                            <button (click)="affectToReparation(employee.id)" mat-raised-button type="button"
-                                matTooltip="Affecter" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                            <button (click)="affectToReparation(employee._id)" mat-raised-button type="button"
+                                matTooltip="Affecter" [matTooltipPosition]="'above'"
+                                class="btn btn-primary btn-link btn-sm btn-just-icon">
                                 <i class="material-icons">add</i>
                             </button>
-                            <button (click)="onDelete(employee.id)" mat-raised-button type="button"
+                            <button (click)="onDelete(employee._id)" mat-raised-button type="button"
                                 matTooltip="Supprimer" [matTooltipPosition]="'above'"
                                 class="btn btn-danger btn-link btn-sm btn-just-icon">
                                 <i class="material-icons">close</i>
@@ -61,15 +57,14 @@
                 </tbody>
                 <tfoot *ngIf="!viewOnly">
                     <tr>
-                      <td colspan="4"> 
-                        <button 
-                            (click)="onCreate()"  mat-raised-button type="button" matTooltip="Créer" 
-                            class="btn btn-danger btn-link btn-sm btn-just-icon">
-                            <i class="material-icons">add</i>
-                        </button>
-                      </td>
+                        <td colspan="4">
+                            <button (click)="onCreate()" mat-raised-button type="button" matTooltip="Créer"
+                                class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                <i class="material-icons">add</i>
+                            </button>
+                        </td>
                     </tr>
-                  </tfoot>
+                </tfoot>
             </table>
         </div>
     </div>
