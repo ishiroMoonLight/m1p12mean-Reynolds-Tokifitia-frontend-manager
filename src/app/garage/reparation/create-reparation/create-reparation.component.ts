@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ReparationService } from 'app/services/reparation/reparation.service';
 
 @Component({
   selector: 'app-create-reparation',
@@ -11,8 +12,9 @@ export class CreateReparationComponent implements OnInit {
   reparationForm: FormGroup;
   imagePreview: string | ArrayBuffer | null = null;
   selectedFile: File | null = null;
+  imageBase64: string | null = null;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private reparationService: ReparationService) {
     this.reparationForm = this.fb.group({
       nom: ['Changement Pare-brise', Validators.required],
       description: ['Description de changement de pare-brise'],
@@ -37,29 +39,48 @@ export class CreateReparationComponent implements OnInit {
       const reader = new FileReader();
       reader.onload = () => {
         this.imagePreview = reader.result;
+        this.convertToBase64(file);
       };
       reader.readAsDataURL(file);
     }
   }
 
+  // Convertir le fichier en base64
+  convertToBase64(file: File) {
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      this.imageBase64 = reader.result as string; // La chaîne base64 de l'image
+    };
+    reader.readAsDataURL(file);
+  }
+
   onSubmit() {
     if (this.reparationForm.valid) {
-      const formData = new FormData();
-      formData.append('nom', this.reparationForm.value.nom);
-      formData.append('description', this.reparationForm.value.description);
-      formData.append('duree', this.reparationForm.value.duree);
-      formData.append('prix', this.reparationForm.value.prix);
-      if (this.selectedFile) {
-        formData.append('image', this.selectedFile);
-      }
+      const reparationData = {
+        nom: this.reparationForm.value.nom,
+        description: this.reparationForm.value.description,
+        duree: this.reparationForm.value.duree,
+        prix: this.reparationForm.value.prix,
+        image: this.imageBase64
+      };
 
-      console.log('Réparation ajoutée:', this.reparationForm.value);
-      alert('Réparation ajoutée avec succès ! 🎉');
+      // Appel du service pour créer la réparation
+      this.reparationService.createReparation(reparationData).subscribe(
+        response => {
+          console.log('Réparation ajoutée avec succès:', response);
+          alert('Réparation ajoutée avec succès ! 🎉');
 
-      // Réinitialiser le formulaire
-      this.reparationForm.reset();
-      this.imagePreview = null;
-      this.selectedFile = null;
+          // Réinitialiser le formulaire
+          this.reparationForm.reset();
+          this.imagePreview = null;
+          this.selectedFile = null;
+          this.imageBase64 = null;
+        },
+        error => {
+          console.error('Erreur lors de la création de la réparation:', error);
+          alert('Erreur lors de l\'ajout de la réparation.');
+        }
+      );
     } else {
       alert('Veuillez remplir tous les champs correctement.');
     }
