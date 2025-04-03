@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { PersonnelService } from 'app/services/personnel/personnel.service';
 
 @Component({
   selector: 'app-create-info',
@@ -10,22 +11,23 @@ export class CreateInfoComponent implements OnInit {
   employeeForm: FormGroup;
   selectedFile: File | null = null;
   imagePreview: string | ArrayBuffer | null = null;
-  showPassword:boolean = false;
-  
-  
+  showPassword: boolean = false;
+  alertMessage: string = '';
+  alertType: string = 'success';
+
   togglePasswordVisibility() {
-      this.showPassword = !this.showPassword;
+    this.showPassword = !this.showPassword;
   }
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private personnelService: PersonnelService) {
     this.employeeForm = this.fb.group({
-      name: ['', Validators.required],
-      firstname: [''],
-      description: [''],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      image: ['', Validators.required],
-      salary: ['', [Validators.required, Validators.min(0)]]
+      name: ['WALKER', Validators.required],
+      firstname: ['Paul'],
+      bio: [''],
+      email: ['paul.walker@yopmail.com', [Validators.required, Validators.email]],
+      // password: ['', [Validators.required, Validators.minLength(6)]],
+      pfp: [''],
+      salary: [200000, [Validators.required, Validators.min(0)]]
     });
   }
 
@@ -37,13 +39,13 @@ export class CreateInfoComponent implements OnInit {
     const file = event.target.files[0];
     if (file) {
       this.selectedFile = file;
-      this.employeeForm.patchValue({ image: file });
-      this.employeeForm.get('image')?.updateValueAndValidity();
 
       // Prévisualisation de l'image
       const reader = new FileReader();
       reader.onload = () => {
         this.imagePreview = reader.result;
+        this.employeeForm.patchValue({ pfp: reader.result });
+        this.employeeForm.get('pfp')?.updateValueAndValidity();
       };
       reader.readAsDataURL(file);
     }
@@ -54,16 +56,30 @@ export class CreateInfoComponent implements OnInit {
       const formData = new FormData();
       formData.append('nom', this.employeeForm.value.name);
       formData.append('prénoms', this.employeeForm.value.firstname);
-      formData.append('bio', this.employeeForm.value.description);
+      formData.append('bio', this.employeeForm.value.bio);
       formData.append('email', this.employeeForm.value.email);
-      formData.append('password', this.employeeForm.value.password);
+      // formData.append('password', this.employeeForm.value.password);
       formData.append('salaire', this.employeeForm.value.salary);
       if (this.selectedFile) {
-        formData.append('image', this.selectedFile);
+        formData.append('pfp', this.selectedFile);
       }
 
-      console.log('Employé ajouté(e):', this.employeeForm.value);
-      alert('Employé ajouté(e) avec succès ! 🎉');
+      // alert('Employé ajouté(e) avec succès ! 🎉');
+
+      console.log('Employé:', JSON.stringify(this.employeeForm.value));
+      // Appel du service pour créer la réparation
+      this.personnelService.registerEmployee(this.employeeForm.value).subscribe(
+        response => {
+          this.alertMessage="Personnel "+ formData.get('nom') +" ajouté(e) avec succès.";
+          this.alertType = 'success';
+          this.resetForm();
+        },
+        error => {
+          console.error('Erreur:', error);
+          this.alertMessage = "Erreur lors de l'ajout de personnel.";
+          this.alertType = 'error';
+        }
+      );
 
       // Réinitialiser le formulaire
       this.resetForm();
@@ -80,5 +96,5 @@ export class CreateInfoComponent implements OnInit {
     if (fileInput) fileInput.value = '';
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 }

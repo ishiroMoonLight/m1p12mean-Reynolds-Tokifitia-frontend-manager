@@ -1,13 +1,6 @@
-import { Component, EventEmitter, OnInit , Output , Input } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, Input } from '@angular/core';
 import { Router } from '@angular/router';
-
-interface Employee {
-  id: string;
-  name: string;
-  firstname: string;
-  task: string;
-  salary: number;
-}
+import { PersonnelService } from 'app/services/personnel/personnel.service';
 
 @Component({
   selector: 'app-list-info',
@@ -15,29 +8,33 @@ interface Employee {
   styleUrls: ['./list-info.component.scss']
 })
 export class ListInfoComponent implements OnInit {
-  @Input() viewOnly:boolean | null = false;
+  @Input() viewOnly: boolean | null = false;
 
 
-  employees: Employee[] = [
-    {
-      id: '1',
-      name: 'John',
-      firstname: 'Doe',
-      task: 'Réparer front',
-      salary: 10000
-    },
-    {
-      id: '2',
-      name: 'Jane',
-      firstname: 'Doe',
-      task: 'Réparer moteur',
-      salary: 12000
-    }
-  ]; 
+  // employees: Employee[] = [
+  //   {
+  //     id: '1',
+  //     name: 'John',
+  //     firstname: 'Doe',
+  //     task: 'Réparer front',
+  //     salary: 10000
+  //   },
+  //   {
+  //     id: '2',
+  //     name: 'Jane',
+  //     firstname: 'Doe',
+  //     task: 'Réparer moteur',
+  //     salary: 12000
+  //   }
+  // ];
+
+  employees: Employee[];
   @Output() changeView = new EventEmitter<{ view: string, id?: string }>();
 
-  
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private personnelService: PersonnelService
+  ) { }
 
   onEdit(employeeId: string) {
     this.changeView.emit({ view: 'edit', id: employeeId });
@@ -62,5 +59,14 @@ export class ListInfoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loadEmployees();
+  }
+
+  loadEmployees(): void {
+    this.personnelService.getAllEmployees().subscribe((data) => {
+      this.employees = data;
+    }, (error) => {
+      console.error('Erreur lors de la récupération des employés', error);
+    });
   }
 }
