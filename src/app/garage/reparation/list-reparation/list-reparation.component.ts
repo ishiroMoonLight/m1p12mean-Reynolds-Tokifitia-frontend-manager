@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { ReparationService } from 'app/services/reparation/reparation.service';
 
 
 // Définition du type Reparation
@@ -19,8 +20,8 @@ interface Reparation {
 })
 export class ListReparationComponent implements OnInit {
 
-  @Input() isAffectPiece:boolean | null = false;
-  @Input() isAffectEmployee:boolean | null = false;
+  @Input() isAffectPiece: boolean | null = false;
+  @Input() isAffectEmployee: boolean | null = false;
   @Output() affectElement = new EventEmitter<Reparation>();
 
   reparations: Reparation[] = [
@@ -50,7 +51,18 @@ export class ListReparationComponent implements OnInit {
     }
   ];
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private reparationService: ReparationService) { }
+
+  ngOnInit(): void {
+    this.loadReparations();
+  }
+
+  // Charger les réparations depuis l'API
+  loadReparations() {
+    this.reparationService.getReparations().subscribe((data) => {
+      this.reparations = data;
+    });
+  }
 
   onEdit(idreparation: string) {
     this.router.navigate(['/reparations/edit', idreparation]);
@@ -59,19 +71,15 @@ export class ListReparationComponent implements OnInit {
   onDelete(id: string) {
     if (confirm("Voulez-vous vraiment supprimer cette réparation ?")) {
       console.log("id reparation : ", id);
-      // this.reparationService.deleteReparation(id).subscribe(() => {
-      //   this.loadReparations(); // Recharge la liste après suppression
-      // });
+      this.reparationService.deleteReparation(id).subscribe(() => {
+        this.loadReparations(); // Recharge la liste après suppression
+      });
     }
   }
 
   onAffect(reparation: Reparation) {
     console.log("reparation to affect : ", reparation);
     this.affectElement.emit(reparation);
-  }
-
-
-  ngOnInit(): void {
   }
 
 }
