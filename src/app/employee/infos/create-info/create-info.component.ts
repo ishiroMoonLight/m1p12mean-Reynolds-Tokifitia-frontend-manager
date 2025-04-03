@@ -12,6 +12,8 @@ export class CreateInfoComponent implements OnInit {
   selectedFile: File | null = null;
   imagePreview: string | ArrayBuffer | null = null;
   showPassword: boolean = false;
+  alertMessage: string = '';
+  alertType: string = 'success';
 
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
@@ -68,16 +70,19 @@ export class CreateInfoComponent implements OnInit {
       // Appel du service pour créer la réparation
       this.personnelService.registerEmployee(this.employeeForm.value).subscribe(
         response => {
-          alert('Succes lors de l\'ajout de personnel.');
+          this.alertMessage="Personnel "+ formData.get('nom') +" ajouté(e) avec succès.";
+          this.alertType = 'success';
           this.resetForm();
         },
         error => {
           console.error('Erreur:', error);
-          alert('Erreur lors de l\'ajout de personnel.');
+          this.alertMessage = "Erreur lors de l'ajout de personnel.";
+          this.alertType = 'error';
         }
       );
 
       // Réinitialiser le formulaire
+      this.resetForm();
     } else {
       alert('Veuillez remplir tous les champs correctement.');
     }

@@ -4,6 +4,7 @@
         <p class="card-category">Formulaire de création d'un compte employé</p>
     </div>
     <div class="card-body">
+        <app-alert [message]="alertMessage" [type]="alertType"></app-alert>
         <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
                 <label for="name">Nom<span class="text-danger">*</span></label>
