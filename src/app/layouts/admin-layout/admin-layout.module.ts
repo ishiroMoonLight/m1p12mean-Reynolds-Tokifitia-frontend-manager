@@ -36,6 +36,7 @@ import { EditInfoComponent } from 'app/employee/infos/edit-info/edit-info.compon
 import { ListInfoComponent } from 'app/employee/infos/list-info/list-info.component';
 import { ShowInfoComponent } from 'app/employee/infos/show-info/show-info.component';
 import { AffectEmployeeComponent } from 'app/employee/affect-employee/affect-employee.component';
+import { AlertComponent } from 'app/alert/alert.component';
 
 @NgModule({
   imports: [
@@ -78,6 +79,7 @@ import { AffectEmployeeComponent } from 'app/employee/affect-employee/affect-emp
     ListInfoComponent,
     ShowInfoComponent,
     AffectEmployeeComponent,
+    AlertComponent,
   ]
 })
 
