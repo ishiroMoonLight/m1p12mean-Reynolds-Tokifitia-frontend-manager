@@ -71,9 +71,9 @@ export class ListReparationComponent implements OnInit {
   onDelete(id: string) {
     if (confirm("Voulez-vous vraiment supprimer cette réparation ?")) {
       console.log("id reparation : ", id);
-      // this.reparationService.deleteReparation(id).subscribe(() => {
-      //   this.loadReparations(); // Recharge la liste après suppression
-      // });
+      this.reparationService.deleteReparation(id).subscribe(() => {
+        this.loadReparations(); // Recharge la liste après suppression
+      });
     }
   }
 

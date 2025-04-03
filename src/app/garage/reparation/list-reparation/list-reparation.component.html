@@ -40,12 +40,12 @@
                         </td>
                         <td class="td-actions text-right">
                             <ng-container *ngIf="!isAffectPiece && !isAffectEmployee">
-                                <button (click)="onEdit(reparation.id)" mat-raised-button type="button"
+                                <button (click)="onEdit(reparation._id)" mat-raised-button type="button"
                                     matTooltip="Modifier" [matTooltipPosition]="'above'"
                                     class="btn btn-primary btn-link btn-sm btn-just-icon">
                                     <i class="material-icons">edit</i>
                                 </button>
-                                <button (click)="onDelete(reparation.id)" mat-raised-button type="button"
+                                <button (click)="onDelete(reparation._id)" mat-raised-button type="button"
                                     matTooltip="Supprimer" [matTooltipPosition]="'above'"
                                     class="btn btn-danger btn-link btn-sm btn-just-icon">
                                     <i class="material-icons">close</i>
